@@ -1,0 +1,148 @@
+.header {
+  display: flex;
+  height: 8vh;
+  min-height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  box-shadow: 0 4px 16px #ccc;
+  background: $bgMain;
+}
+
+.btn-come-back {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 3rem;
+  color: $bgContactsCard;
+}
+.header-user-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.header-avatar__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  margin-right: 10px;
+  background: $bgMainInvert;
+  box-shadow:  0 2px 14px #393939;
+  @include fontSize($L_FontSize, $cursiveFontFamily, #FFFFFF);
+  border-radius: 50%;
+}
+
+.header__chat-name{
+  margin-left: 20px;
+  @include fontSize($M_FontSize, $formFontFamily, white, $fontW:bold);
+  span {
+    @include fontSize($L_FontSize, $cursiveFontFamily, #FFFFFF);
+  }
+}
+.contacts-card__user-name_in-header {
+  @include fontSize(0.85rem, $cursiveFontFamily, #FFFFFF);
+}
+
+.header__status {
+  margin-right: 10px;
+  grid-area: status;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .status_online {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #3fbb3e;
+  }
+  .status_offline {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+  }
+  &.hide {
+    display: none;
+  }
+}
+
+@media (min-width: $pc) {
+  .header {
+    height: 8vh;
+    min-height: 50px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  .header-user-wrap {
+    margin-left: 30px;
+  }
+  .header-avatar__item {
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: $XL_FontSize;
+  }
+
+  .btn-come-back {
+    display: none;
+  }
+
+  .header__chat-name{
+    @include fontSize($XL_FontSize, $formFontFamily, white, $fontW:bold);
+    &.hide {
+      display: block;
+    }
+    span {
+      display: inline-block;
+      @keyframes swing {
+        15% {
+          -webkit-transform: translateX(5px);
+          transform: translateX(5px);
+        }
+        30% {
+          -webkit-transform: translateX(-5px);
+          transform: translateX(-5px);
+        }
+        40% {
+          -webkit-transform: translateX(3px);
+          transform: translateX(3px);
+        }
+        50% {
+          -webkit-transform: translateX(-3px);
+          transform: translateX(-3px);
+        }
+        65% {
+          -webkit-transform: translateX(2px);
+          transform: translateX(3px);
+        }
+        100% {
+          -webkit-transform: translateX(0);
+          transform: translateX(0);
+        }
+      }
+
+      &:hover {
+        -webkit-animation: swing 0.6s ease;
+        animation: swing 0.6s ease;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .contacts-card__user-name_in-header {
+    @include fontSize(1.5rem, $cursiveFontFamily, #FFFFFF);
+  }
+  .header__status {
+    margin-right: 25px;
+  }
+}

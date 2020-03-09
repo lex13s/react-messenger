@@ -1,0 +1,17 @@
+html {
+  @include fontSize($M_FontSize, $mainFontFamily);
+  height: 100vh;
+}
+
+h1 {
+  font-size: 1.3rem;
+  color: white;
+}
+
+body {
+  margin: 0;
+}
+
+.hide {
+  display: none;
+}

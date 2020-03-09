@@ -1,0 +1,23 @@
+$pc: 996px;
+
+//Цвета
+//$bgMain: #015d53; //bg main
+//$bgMain: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(21,98,25,1) 49%, rgba(10,154,138,1) 100%, rgba(7,172,175,1) 100%, rgba(16,127,83,1) 100%, rgba(0,212,255,1) 100%);;
+//$bgMain: linear-gradient(45deg, rgba(145,36,22,1) 0%, rgba(0,0,0,1) 76%);
+$bgMain: linear-gradient(-45deg, rgba(145,36,22,1) 0%, rgba(33,29,29,1) 0%, rgba(104,26,16,1) 87%, rgba(116,35,25,1) 100%);
+$bgMainInvert: linear-gradient(45deg, rgba(145,36,22,1) 0%, rgba(33,29,29,1) 0%, rgba(104,26,16,1) 87%, rgba(116,35,25,1) 100%);
+$bgContacts: #ffefd2;
+$bgContactsCard: white;
+$colorStatusGreen: #1dd714;
+$colorStatusRed: #ff2311;
+
+$XL_FontSize: 1.7rem;
+$L_FontSize: 1.1rem;
+$M_FontSize: 1rem;
+$S_FontSize: 0.8rem;
+$messageArea: 1rem;
+
+$mainFontFamily: "Fira Mono", "Droid Sans Mono", monospace, monospace;
+$secondFontFamily: "Source Code Pro", "SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", monospace, monospace;
+$formFontFamily: 'Hind Guntur', 'Proxima Nova', 'Arial', 'Helvetica Neue', sans-serif;
+$cursiveFontFamily: 'La Belle', 'Aurore', cursive;

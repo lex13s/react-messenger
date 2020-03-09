@@ -1,0 +1,13 @@
+.wrapOverlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/jschat/design/img/bg-messages.jpg);
+
+  background-position: center;
+  background-size: contain;
+  z-index: 50;
+}
