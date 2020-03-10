@@ -1,13 +1,21 @@
-import React, {useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import Avatar from "../Head/Avatar/Avatar";
 import UserName from "../Head/UserName/UserName";
 import LastMessage from "../LastMessage/LastMessage";
 import Status from "../Status/Status";
 import TimeLastMessage from "../LastMessage/TimeLastMessage/TimeLastMessage";
-import {FirebaseContext} from "../Context/firebaseContext/FirebaseContext";
+import Firebase from "../Firebase/Firebase";
 
 const ContactCards = ({usersList, currentUser, dataUsersOnline, createChatKey, setShow, setUserFriend, setChatKey}) => {
-  const {dataMessages} = useContext(FirebaseContext);
+  const {messages} = Firebase;
+  const [dataMessages, setDataMessages] = useState(null);
+
+  useEffect(() => {
+    messages.on('value', snapshot => {
+      setDataMessages(snapshot.val());
+    }, []);
+  }, []);
+
   const contactCardRender = (data) => {
     const contactCard = usersList.map((user) => {
       const chatKey = createChatKey(user);

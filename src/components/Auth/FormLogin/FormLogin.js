@@ -2,7 +2,6 @@ import React, {useContext, useState, useEffect} from 'react';
 import Firebase from '../../Firebase/Firebase';
 import {AuthContext} from '../../Context/authContext/AuthContext';
 import {PreloaderContext} from '../../Context/preloaderContext/preloaderContext';
-import {ModalContext} from '../../Context/modalContext/modalContext';
 import Modal from "../../UI/Modal/Modal";
 import Input from "../../UI/Input/Input";
 import Icon from "../../UI/IconEye/Icon";
@@ -10,11 +9,11 @@ import MainButton from "../../UI/Buttons/MainButton/MainButton";
 import withClass from "../../hoc/withClass/withClass";
 import Wrapper from "../../hoc/Wrapper/Wrapper";
 import {FirebaseContext} from "../../Context/firebaseContext/FirebaseContext";
+import app from '../../../services/initFirebase';
 
 const FormLogin = ({showPasswordOrText, eyeShowHide, checkEye, history}) => {
   const {users, presence} = Firebase;
   const {hidePreloader, showPreloader} = useContext(PreloaderContext);
-  const {modalShow} = useContext(ModalContext);
   const {setCurrentUser} = useContext(AuthContext);
   const {setDataUsersOnline} = useContext(FirebaseContext);
   const {getDataUsersOnline} = Firebase;
@@ -58,6 +57,10 @@ useEffect(() => {
         hidePreloader();
       }
       if (dataUsers[name] && password === dataUsers[name].password) {
+
+        //=============\
+        //Firebase.login(name, email, password);
+        //===============
         presence.child(`/${name}`).update({
           userName: name,
           onlineStatus: true
@@ -74,7 +77,15 @@ useEffect(() => {
           })
         });
         hidePreloader();
-        //modalShow(`Добро пожаловать ${name}!!!`, `Вход успешно выполнен, спасибо, что пользуетесь нашей программой!`);
+
+        app.auth().onAuthStateChanged((user)=> {
+          if (user) {
+            console.log(user)
+          } else {
+            console.log(` вышел ${user}`)
+          }
+        });
+
         setCurrentUser(name);
         history.push('/home/');
       }

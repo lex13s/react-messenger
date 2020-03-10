@@ -43,7 +43,6 @@ const Contacts = () => {
                           setChatKey={setChatKey}/>
           </nav>
 
-          {/*{showMessage && <Messages user={currentUser} chatKey={chatKey} isActive={show}/> || <div className='messages-preloader' style={ {'fontSize': '1.2rem'}}>Для начала чата кликните на любом пользователе</div>}*/}
           {showMessage && <Messages user={currentUser} chatKey={chatKey} isActive={show}/> || <MessagesPreloader/>}
         </main>
       </>

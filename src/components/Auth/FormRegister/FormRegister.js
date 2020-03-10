@@ -167,9 +167,14 @@ class FormRegister extends Component {
       }
       return true
     };
+
     users.once("value", (snapshot) => {
           const dataUsers = snapshot.val();
           if (checkLoginToDatabase(dataUsers) && checkEmailToDatabase(dataUsers)) {
+            //================
+           //Firebase.registerInFirebase(name, email, password);
+            //ошибки можно не обрабатывать, тк проввверили
+            //==============
             const newUser = users.child(`/${name}`);
             newUser.update({
               userName: name,

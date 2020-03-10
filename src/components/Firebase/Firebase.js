@@ -46,14 +46,15 @@ class Firebase {
   }
 
   async registerInFirebase(name, email, password) {
-    await this.auth.createUserWithEmailAndPassword(email, password)
+    await this.auth.createUserWithEmailAndPassword(email, password);
+    console.log(this.auth.currentUser);
     return this.auth.currentUser.updateProfile({
       displayName: name
     })
   }
 
   async login(name, email, password) {
-    await this.auth.signInWithEmailAndPassword(email, password)
+    await this.auth.signInWithEmailAndPassword(email, password);
     return this.auth.currentUser.updateProfile({
       displayName: name
     })
@@ -81,6 +82,10 @@ class Firebase {
   async getCurrentUserQuote() {
     const quote = await this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).get();
     return quote.get('quote')
+  }
+  getCurrentUsername() {
+    //return this.auth.currentUser && this.auth.currentUser.displayName
+    return app.auth().currentUser
   }
 }
 
