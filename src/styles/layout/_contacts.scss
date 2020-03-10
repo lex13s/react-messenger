@@ -46,7 +46,7 @@
 
 .contacts-card__user-name {
   grid-area: user-name;
-  @include fontSize($L_FontSize, $cursiveFontFamily, #361617, $fontW: bold);
+  @include fontSize($L_FontSize, $mainFontFamily, #361617, $fontW: bold);
 }
 
 .contacts-card__last-message {

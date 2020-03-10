@@ -246,7 +246,7 @@ body {
 .contacts-card__user-name {
   grid-area: user-name;
   font-size: 1.1rem;
-  font-family: "La Belle", "Aurore", cursive;
+  font-family: "Fira Mono", "Droid Sans Mono", monospace, monospace;
   font-weight: bold;
   color: #361617;
 }
