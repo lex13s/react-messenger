@@ -299,6 +299,7 @@ body {
 
 @media (min-width: 996px) {
   .contacts {
+    overflow-x: hidden;
     width: 40%;
     max-width: 1200px;
   }

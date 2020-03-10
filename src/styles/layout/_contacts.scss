@@ -93,6 +93,7 @@
 
 @media (min-width: $pc) {
   .contacts {
+    overflow-x: hidden;
     width: 40%;
     max-width: 1200px;
   }
