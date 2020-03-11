@@ -1,17 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Avatar from "../Head/Avatar/Avatar";
 import UserName from "../Head/UserName/UserName";
 import LastMessage from "../LastMessage/LastMessage";
 import Status from "../Status/Status";
 import TimeLastMessage from "../LastMessage/TimeLastMessage/TimeLastMessage";
 import Firebase from "../Firebase/Firebase";
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 const ContactCards = ({usersList, currentUser, dataUsersOnline, createChatKey, setShow, setUserFriend, setChatKey}) => {
   const {messages} = Firebase;
   let history = useHistory();
-  let location = useLocation();
-  // console.log(location);
 
   const contactCardRender = (data) => {
     let dataMessages = {};

@@ -5,21 +5,10 @@ import {AuthContext} from "../authContext/AuthContext";
 export const FirebaseContext = React.createContext();
 export const FirebaseProvide = ({children}) => {
   const {currentUser} = useContext(AuthContext);
-  const {messages, getDataUsers, getDataUsersOnline} = Firebase;
+  const {messages, getDataUsers} = Firebase;
   const [usersList, setUsersList] = useState();
   const [dataUsersOnline, setDataUsersOnline] = useState();
   const [dataMessages, setDataMessages] = useState();
-
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     getDataUsersOnline().then((data) => {
-  //       let users = Object.keys(data);
-  //       console.log(data);
-  //       setDataUsersOnline(users);
-  //     });
-  //   }
-  // },[]);
-
 
   useEffect(() => {
     getDataUsers().then((data) => {

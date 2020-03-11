@@ -48,7 +48,6 @@ class Firebase {
   async registerInFirebase(email, password) {
     try {
       await app.auth().createUserWithEmailAndPassword(email, password);
-      console.log(app.auth().currentUser);
     } catch (e) {
       new Error(e);
       console.log(e);
@@ -66,20 +65,6 @@ class Firebase {
     }catch (e) {
       console.log(e)
     }
-
-
-
-
-    // Set the tenant ID on Auth instance.
-
-    //this.auth().tenantId = name;
-// All future sign-in request now include tenant ID.
-//     app.auth().signInWithEmailAndPassword(email, password)
-//         .then((result)=> {
-//           console.log(result.user);
-//         }).catch(function(error) {
-//       // Handle error.
-//     });
   }
 
   logout() {

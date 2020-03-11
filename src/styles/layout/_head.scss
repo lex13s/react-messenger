@@ -1,6 +1,7 @@
 .header {
+  position: fixed;
+  height: 55px;
   display: flex;
-  height: 8vh;
   min-height: 50px;
   width: 100%;
   align-items: center;
@@ -71,6 +72,7 @@
 
 @media (min-width: $pc) {
   .header {
+    position: static;
     height: 8vh;
     min-height: 50px;
     width: 100%;

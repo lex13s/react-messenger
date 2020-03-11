@@ -11,7 +11,6 @@ const Messages = ({user, chatKey, isActive}) => {
 
   const messagesRender = () => {
     let dataMessages = {};
-
     messages.on('value', snapshot => {
       dataMessages = snapshot.val();
     });
@@ -30,9 +29,6 @@ const Messages = ({user, chatKey, isActive}) => {
       } else {
         return null
       }
-
-
-
   };
 
   return (

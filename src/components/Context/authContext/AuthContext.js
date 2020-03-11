@@ -1,15 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import firebase from "firebase";
+import React, {useState} from 'react';
 
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({children}) => {
 
-  const [currentUser, setCurrentUser] = useState(null);
-
-  // useEffect( ()=> {
-  //   setCurrentUser( ()=> firebase.getCurrentUsername() )
-  // });
+const [currentUser, setCurrentUser] = useState(null);
 
   return (
       <AuthContext.Provider

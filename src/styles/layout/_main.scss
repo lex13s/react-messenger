@@ -1,11 +1,14 @@
 .main {
   width: 100%;
-  height: 92vh;
+  height: 100vh;
+  padding-top: 55px;
 }
 @media (min-width: $pc) {
   .main {
     display: flex;
+    height: 92vh;
     margin: 0 auto;
     max-width: 1200px;
+    padding-top: 0;
   }
 }

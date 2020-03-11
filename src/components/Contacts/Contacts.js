@@ -1,7 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import classNames from 'classname';
 import {FirebaseContext} from "../Context/firebaseContext/FirebaseContext";
-import {AuthContext} from "../Context/authContext/AuthContext";
 import Head from "../Head/Head";
 import Messages from "../Messages/Messages";
 import ContactCards from "../ContactCard/ContactCards";
@@ -9,11 +8,8 @@ import MessagesPreloader from "../../pages/MessagesPreloader";
 import {Redirect} from 'react-router-dom';
 
 const Contacts = ({firebaseInitialized, dataUsersOnline, currentUser}) => {
-  console.log(dataUsersOnline);
 
   const {usersList, createChatKey} = useContext(FirebaseContext);
-  //const {currentUser} = useContext(AuthContext);
-  console.log(currentUser);
   const [show, setShow] = useState('show');
   const [userFriend, setUserFriend] = useState();
   const [chatKey, setChatKey] = useState();
@@ -23,6 +19,7 @@ const Contacts = ({firebaseInitialized, dataUsersOnline, currentUser}) => {
       'contacts',
       'contacts-wrap',
   );
+
   useEffect(() => {
     if (userFriend && chatKey) setShowMessage(true)
   }, [userFriend, chatKey]);

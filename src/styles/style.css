@@ -21,8 +21,9 @@ body {
 }
 
 .header {
+  position: fixed;
+  height: 55px;
   display: flex;
-  height: 8vh;
   min-height: 50px;
   width: 100%;
   align-items: center;
@@ -107,6 +108,7 @@ body {
 
 @media (min-width: 996px) {
   .header {
+    position: static;
     height: 8vh;
     min-height: 50px;
     width: 100%;
@@ -191,14 +193,17 @@ body {
 }
 .main {
   width: 100%;
-  height: 92vh;
+  height: 100vh;
+  padding-top: 55px;
 }
 
 @media (min-width: 996px) {
   .main {
     display: flex;
+    height: 92vh;
     margin: 0 auto;
     max-width: 1200px;
+    padding-top: 0;
   }
 }
 .contacts-wrap {
@@ -321,7 +326,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 92vh;
+  height: 100%;
   width: 100%;
   background: url(https://i.ibb.co/68SHCZs/bg-messages.jpg);
 }
@@ -460,6 +465,7 @@ body {
 }
 
 .button-send-wrap {
+  margin-right: -5px;
   height: 100%;
   min-width: 10%;
   display: flex;
@@ -484,6 +490,11 @@ body {
   font-weight: bold;
 }
 
+@media (min-width: 600px) {
+  .button-send-wrap {
+    margin-right: -20px;
+  }
+}
 @media (min-width: 996px) {
   .messages {
     width: 60%;
@@ -508,6 +519,10 @@ body {
     font-family: "La Belle", "Aurore", cursive;
     font-weight: italic;
     color: black;
+  }
+
+  .button-send-wrap {
+    margin-right: -20px;
   }
 
   .messages-footer {

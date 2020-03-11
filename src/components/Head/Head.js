@@ -9,7 +9,7 @@ import firebase from "../Firebase/Firebase";
 const Head = ({user, className, status, backContacts, isActiveMessages, showStatus, currentUser}) => {
   //==========
   //const {currentUser} = useContext(AuthContext);
-  console.log(currentUser);
+
   const [showFriendAvatar, setShowFriendAvatar] = useState(currentUser);
   //const showFriendAvatar = firebase.getCurrentUsername();
 
@@ -20,11 +20,6 @@ const Head = ({user, className, status, backContacts, isActiveMessages, showStat
       setShowFriendAvatar(currentUser)
     }
   }, [user]);
-
-  //console.log('user-', user);
-  //console.log('showFriendAvatar-', showFriendAvatar);
-
-  ///////////////
 
   const showStatusFriend = showStatus === 'show' ? 'hide' : 'show';
 
