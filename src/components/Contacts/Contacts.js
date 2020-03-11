@@ -6,15 +6,19 @@ import Head from "../Head/Head";
 import Messages from "../Messages/Messages";
 import ContactCards from "../ContactCard/ContactCards";
 import MessagesPreloader from "../../pages/MessagesPreloader";
+import {Redirect} from 'react-router-dom';
 
-const Contacts = () => {
+const Contacts = ({firebaseInitialized, dataUsersOnline, currentUser}) => {
+  console.log(dataUsersOnline);
 
-  const {usersList, dataUsersOnline, createChatKey} = useContext(FirebaseContext);
-  const {currentUser} = useContext(AuthContext);
+  const {usersList, createChatKey} = useContext(FirebaseContext);
+  //const {currentUser} = useContext(AuthContext);
+  console.log(currentUser);
   const [show, setShow] = useState('show');
   const [userFriend, setUserFriend] = useState();
   const [chatKey, setChatKey] = useState();
   const [showMessage, setShowMessage] = useState();
+
   let classContacts = classNames(
       'contacts',
       'contacts-wrap',
@@ -23,14 +27,16 @@ const Contacts = () => {
     if (userFriend && chatKey) setShowMessage(true)
   }, [userFriend, chatKey]);
 
-  return (
+  return firebaseInitialized ? (
       <>
         <Head className="contacts-card__user-name_in-header"
               user={userFriend}
               status={userFriend && dataUsersOnline[userFriend] ? 'status_online' : 'status_offline'}
               backContacts={setShow}
               isActiveMessages={show}
-              showStatus={show}/>
+              showStatus={show}
+              currentUser={currentUser}/>
+
 
         <main className='main'>
           <nav className={`${classContacts} ${show}`}>
@@ -46,6 +52,6 @@ const Contacts = () => {
           {showMessage && <Messages user={currentUser} chatKey={chatKey} isActive={show}/> || <MessagesPreloader/>}
         </main>
       </>
-  )
+  ) : <Redirect to="/"/>
 };
 export default Contacts;

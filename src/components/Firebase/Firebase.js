@@ -2,7 +2,7 @@ import app from '../../services/initFirebase';
 
 class Firebase {
   constructor() {
-    this.auth = app.auth();
+    this.auth = app.auth;
     this.db = app.database();
     this.presence = app.database().ref('presence/');
     this.users = app.database().ref('users/');
@@ -45,19 +45,41 @@ class Firebase {
     }
   }
 
-  async registerInFirebase(name, email, password) {
-    await this.auth.createUserWithEmailAndPassword(email, password);
-    console.log(this.auth.currentUser);
-    return this.auth.currentUser.updateProfile({
-      displayName: name
-    })
+  async registerInFirebase(email, password) {
+    try {
+      await app.auth().createUserWithEmailAndPassword(email, password);
+      console.log(app.auth().currentUser);
+    } catch (e) {
+      new Error(e);
+      console.log(e);
+    }
   }
 
-  async login(name, email, password) {
-    await this.auth.signInWithEmailAndPassword(email, password);
-    return this.auth.currentUser.updateProfile({
-      displayName: name
-    })
+  async login(email, password, name, history) {
+    try {
+      await app.auth().signInWithEmailAndPassword(email, password);
+
+      await app.auth().currentUser.updateProfile({
+        displayName: name
+      });
+      history.push('/home/');
+    }catch (e) {
+      console.log(e)
+    }
+
+
+
+
+    // Set the tenant ID on Auth instance.
+
+    //this.auth().tenantId = name;
+// All future sign-in request now include tenant ID.
+//     app.auth().signInWithEmailAndPassword(email, password)
+//         .then((result)=> {
+//           console.log(result.user);
+//         }).catch(function(error) {
+//       // Handle error.
+//     });
   }
 
   logout() {
@@ -75,7 +97,7 @@ class Firebase {
 
   isInitialized() {
     return new Promise(resolve => {
-      this.auth.onAuthStateChanged(resolve)
+      app.auth().onAuthStateChanged(resolve)
     })
   }
 
@@ -84,8 +106,12 @@ class Firebase {
     return quote.get('quote')
   }
   getCurrentUsername() {
-    //return this.auth.currentUser && this.auth.currentUser.displayName
-    return app.auth().currentUser
+    // return app.auth().currentUser && app.auth().currentUser.displayName
+    if (app.auth().currentUser) {
+      return app.auth().currentUser.displayName
+    } else {
+      return null
+    }
   }
 }
 

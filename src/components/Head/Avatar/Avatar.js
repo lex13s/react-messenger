@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Avatar({className, user}) {
+  console.log(user);
 
   function firstChar(str) {
       return  str.charAt(0).toUpperCase()

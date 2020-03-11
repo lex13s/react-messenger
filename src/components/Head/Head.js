@@ -4,14 +4,20 @@ import Avatar from "./Avatar/Avatar";
 import UserName from "./UserName/UserName";
 import Status from "../Status/Status";
 import {AuthContext} from '../Context/authContext/AuthContext';
+import firebase from "../Firebase/Firebase";
 
-const Head = ({user, className, status, backContacts, isActiveMessages, showStatus}) => {
+const Head = ({user, className, status, backContacts, isActiveMessages, showStatus, currentUser}) => {
   //==========
-  const {currentUser} = useContext(AuthContext);
+  //const {currentUser} = useContext(AuthContext);
+  console.log(currentUser);
   const [showFriendAvatar, setShowFriendAvatar] = useState(currentUser);
+  //const showFriendAvatar = firebase.getCurrentUsername();
+
   useEffect( ()=> {
     if (user) {
       setShowFriendAvatar(user)
+    } else {
+      setShowFriendAvatar(currentUser)
     }
   }, [user]);
 
@@ -33,7 +39,7 @@ const Head = ({user, className, status, backContacts, isActiveMessages, showStat
         <h1 className={`header__chat-name ${showStatus}`}>{`React chat `}<span>by Alex</span></h1>
 
         <div className='header-user-wrap'>
-          {<Avatar className='header-avatar' user={showFriendAvatar}/>}
+          {/*<Avatar className='header-avatar' user={showFriendAvatar}/>*/}
           <UserName className={className} name={isActiveMessages === 'hide' && user || ''}/>
         </div>
 

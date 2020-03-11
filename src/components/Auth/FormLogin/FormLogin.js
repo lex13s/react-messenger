@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import Firebase from '../../Firebase/Firebase';
+import firebase from '../../Firebase/Firebase';
 import {AuthContext} from '../../Context/authContext/AuthContext';
 import {PreloaderContext} from '../../Context/preloaderContext/preloaderContext';
 import Modal from "../../UI/Modal/Modal";
@@ -9,15 +9,15 @@ import MainButton from "../../UI/Buttons/MainButton/MainButton";
 import withClass from "../../hoc/withClass/withClass";
 import Wrapper from "../../hoc/Wrapper/Wrapper";
 import {FirebaseContext} from "../../Context/firebaseContext/FirebaseContext";
-import app from '../../../services/initFirebase';
+
 
 const FormLogin = ({showPasswordOrText, eyeShowHide, checkEye, history}) => {
-  const {users, presence} = Firebase;
+  const {users, presence, getDataUsersOnline, login} = firebase;
   const {hidePreloader, showPreloader} = useContext(PreloaderContext);
   const {setCurrentUser} = useContext(AuthContext);
   const {setDataUsersOnline} = useContext(FirebaseContext);
-  const {getDataUsersOnline} = Firebase;
-  //modal
+
+
   const [isOpen, setIsOpen] = useState(false),
     [messageErrEmailOrUser, setMessageErrEmailOrUser] = useState("Error username or password"),
     [title, setTitle] = useState("Error username or password"),
@@ -33,7 +33,6 @@ useEffect(() => {
     setIsOpen(false)
   }
 }, [isOpen, count]);
-  //====
 
   const signIn = (event, name, password) => {
     event.preventDefault();
@@ -41,7 +40,6 @@ useEffect(() => {
     users.once("value", (snapshot) => {
       const dataUsers = snapshot.val();
       if (!dataUsers[name]) {
-        //modalShow(`ОШИБКА ${name}`, `Пользователь ${name} не зарегистрирован. Просьба сначала зарегистрироваться`);
         setTitle(`ОШИБКА ${name}`);
         setMessageErrEmailOrUser(`Пользователь ${name} не зарегистрирован. Просьба сначала зарегистрироваться`);
         setIsOpen(true);
@@ -49,7 +47,6 @@ useEffect(() => {
         hidePreloader();
       }
       if (dataUsers[name] && password !== dataUsers[name].password) {
-        //modalShow(`ОШИБКА`, `Введите корректный пароль для пользователя ${name}`);
         setTitle(`ОШИБКА`);
         setMessageErrEmailOrUser(`Введите корректный пароль для пользователя ${name}`);
         setIsOpen(true);
@@ -57,37 +54,29 @@ useEffect(() => {
         hidePreloader();
       }
       if (dataUsers[name] && password === dataUsers[name].password) {
+        const email = dataUsers[name].email;
 
-        //=============\
-        //Firebase.login(name, email, password);
-        //===============
         presence.child(`/${name}`).update({
           userName: name,
           onlineStatus: true
         });
         presence.child(`/${name}`).onDisconnect().remove();
+
         presence.on('child_added', snapshot => {
           getDataUsersOnline().then( (snapshot) => {
             setDataUsersOnline(snapshot);
               })
         });
+
         presence.on('child_removed', snapshot => {
           getDataUsersOnline().then( (snapshot) => {
             setDataUsersOnline(snapshot);
           })
         });
-        hidePreloader();
-
-        app.auth().onAuthStateChanged((user)=> {
-          if (user) {
-            console.log(user)
-          } else {
-            console.log(` вышел ${user}`)
-          }
-        });
 
         setCurrentUser(name);
-        history.push('/home/');
+        hidePreloader();
+        login(email, password, name, history);
       }
     });
   };

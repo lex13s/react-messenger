@@ -23,23 +23,23 @@ function App() {
                    component={Auth}
             />
             <Route path='/home/'
-                   exact
+                   // exact
                    component={Home}/>
 
-            <Route path='/home/:id'
-                   render={({match, location, history}) => {
-                     console.log(match, location, history);
-                     const {name} = match.params;
-                     return (
-                         <>
-                           <Head/>
-                           <Contacts/>
-                           <Messages userId={name}/>
-                         </>
-                     )
-                   }
-                   }
-            />
+            {/*<Route path='/home/:id'*/}
+            {/*       render={({match, location, history}) => {*/}
+            {/*         console.log(match, location, history);*/}
+            {/*         const {name} = match.params;*/}
+            {/*         return (*/}
+            {/*             <>*/}
+            {/*               <Head/>*/}
+            {/*               <Contacts/>*/}
+            {/*               <Messages userId={name}/>*/}
+            {/*             </>*/}
+            {/*         )*/}
+            {/*       }*/}
+            {/*       }*/}
+            {/*/>*/}
             <Redirect to='/'/>
           </Switch>
         </FirebaseProvide>

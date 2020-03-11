@@ -5,18 +5,21 @@ import LastMessage from "../LastMessage/LastMessage";
 import Status from "../Status/Status";
 import TimeLastMessage from "../LastMessage/TimeLastMessage/TimeLastMessage";
 import Firebase from "../Firebase/Firebase";
+import { useHistory, useLocation } from 'react-router-dom';
 
 const ContactCards = ({usersList, currentUser, dataUsersOnline, createChatKey, setShow, setUserFriend, setChatKey}) => {
   const {messages} = Firebase;
-  const [dataMessages, setDataMessages] = useState(null);
-
-  useEffect(() => {
-    messages.on('value', snapshot => {
-      setDataMessages(snapshot.val());
-    }, []);
-  }, []);
+  let history = useHistory();
+  let location = useLocation();
+  // console.log(location);
 
   const contactCardRender = (data) => {
+    let dataMessages = {};
+      messages.on('value', snapshot => {
+        dataMessages = snapshot.val();
+      }, []);
+
+
     const contactCard = usersList.map((user) => {
       const chatKey = createChatKey(user);
       if (currentUser === user) {
@@ -29,6 +32,7 @@ const ContactCards = ({usersList, currentUser, dataUsersOnline, createChatKey, s
                      setUserFriend(user);
                      setChatKey(chatKey);
                      setShow('hide');
+                     history.push(`/home/${chatKey}/`);
                    }}
           >
             <Avatar className='contacts-card-avatar' user={user} key={`contacts-card-avatar_${user}`}/>
@@ -45,9 +49,11 @@ const ContactCards = ({usersList, currentUser, dataUsersOnline, createChatKey, s
     });
     return contactCard;
   };
+
+  // console.log(usersList, currentUser, dataUsersOnline);
   return (
       <div>
-        {usersList && currentUser && dataUsersOnline && contactCardRender(dataUsersOnline)}
+        {usersList && currentUser && dataUsersOnline &&  contactCardRender(dataUsersOnline)}
       </div>
   )
 };

@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import Firebase from '../../Firebase/Firebase';
+import firebase from '../../Firebase/Firebase';
 import Input from '../../UI/Input/Input';
 import MainButton from '../../UI/Buttons/MainButton/MainButton';
 import Icon from '../../UI/IconEye/Icon';
 import withClass from '../../hoc/withClass/withClass';
 import Wrapper from '../../hoc/Wrapper/Wrapper';
-
+//import app from "../../../services/initFirebase";
+//import app from '../../../services/initFirebase'
 class FormRegister extends Component {
   constructor(props) {
     super(props);
@@ -102,8 +103,7 @@ class FormRegister extends Component {
         data.label = `${data.validLabel} success`
       }
     };
-
-    const addValidValue = (isElementValid)=>{
+    const addValidValue = (isElementValid) => {
       if (isElementValid) {
         dataInput[elem].valid = true;
         dataInput[elem].touched = false;
@@ -114,7 +114,6 @@ class FormRegister extends Component {
         dataInput[elem].value = '';
       }
     };
-
     if (dataInput[elem].validation.required) {
       switch (elem) {
         case 'username' :
@@ -136,11 +135,20 @@ class FormRegister extends Component {
           break;
       }
     }
-
     Object.keys(dataInput).forEach(type => {
       formValid = dataInput[type].valid && formValid;
     });
     this.setState({dataInput, formValid})
+  };
+
+  onRegister = (name, email, password)=> {
+    // try {
+    firebase.registerInFirebase(name, email, password)
+    //await firebase.addQuote(quote)
+    //props.history.replace('/dashboard')
+    // } catch(error) {
+    //   alert(error.message)
+    // }
   };
 
   registration = (event, name, email, password, showPreloader, hidePreloader, modalShow, modalHide, users, setIsActive) => {
@@ -159,20 +167,17 @@ class FormRegister extends Component {
     };
     const checkLoginToDatabase = (data) => {
       if (data[name]) {
-
         hidePreloader();
-
         modalShow(`ОШИБКА ${name}`, `Пользователь ${name} уже создан в системе, просьба выбрать другое имя`);
         return false
       }
       return true
     };
-
     users.once("value", (snapshot) => {
           const dataUsers = snapshot.val();
           if (checkLoginToDatabase(dataUsers) && checkEmailToDatabase(dataUsers)) {
             //================
-           //Firebase.registerInFirebase(name, email, password);
+            //Firebase.registerInFirebase(name, email, password);
             //ошибки можно не обрабатывать, тк проввверили
             //==============
             const newUser = users.child(`/${name}`);
@@ -181,11 +186,18 @@ class FormRegister extends Component {
               email: email,
               password: password,
             });
-
             hidePreloader();
+            //==============
+            //registerInFirebase(email, password)
+            // firebase.registerInFirebase(email, password)
+            //     .catch(function (e) {
+            //       new Error(e);
+            //       console.log(e);
+            //     });
+            //==========
+            this.onRegister(email, password);
 
             modalShow(`Поздравляем!`, `Пользователь "${name}" успешно зарегистрирован! Просьба войти в систему`);
-
             setIsActive((preAction) => !preAction);
           }
         }
@@ -193,7 +205,8 @@ class FormRegister extends Component {
   };
 
   render() {
-    const {users} = Firebase;
+    const {users} = firebase;
+    //const {firebase} = app;
     const {showPasswordOrText, eyeShowHide, checkEye, hidePreloader, showPreloader, modalHide, modalShow, setIsActive} = this.props;
     const inputRender = () => {
       const inputs = Object.keys(this.state.dataInput).map((elem, index) => {
