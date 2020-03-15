@@ -3,8 +3,7 @@
   display: grid;
   grid-gap: 15px;
   padding: 10px;
-  grid-template-columns: auto 1fr auto;
-
+  grid-template-columns: 1fr auto;
   background: #fff;
   position: relative;
 
@@ -41,6 +40,9 @@
     width: 15px;
     height: 15px;
   }
+}
+.btn-come-back.hide {
+  display: none;
 }
 
 .header-kitty {

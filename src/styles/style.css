@@ -17,7 +17,7 @@ body {
   display: grid;
   grid-gap: 15px;
   padding: 10px;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto;
   background: #fff;
   position: relative;
 }
@@ -51,6 +51,10 @@ body {
 .btn-come-back svg {
   width: 15px;
   height: 15px;
+}
+
+.btn-come-back.hide {
+  display: none;
 }
 
 .header-kitty {
@@ -404,7 +408,7 @@ body {
 }
 
 .messages-footer__send-area {
-  height: 36px;
+  height: 38px;
   width: 100%;
   border-radius: 20px;
   color: #333;
