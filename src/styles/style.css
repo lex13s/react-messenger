@@ -17,7 +17,7 @@ body {
   display: grid;
   grid-gap: 15px;
   padding: 10px;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 7fr 10fr;
   background: #fff;
   position: relative;
 }
@@ -96,15 +96,16 @@ body {
   display: block;
 }
 
-.header-avatar_wrap {
-  margin-right: 10px;
-}
-
 .header-user-wrap {
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+}
+
+.header-avatar_wrap {
+  margin-right: 10px;
 }
 
 .header__status {
@@ -133,7 +134,6 @@ body {
 
 @media (min-width: 996px) {
   .header {
-    grid-template-columns: 7fr 10fr;
     grid-gap: 26px;
     align-items: center;
     background: #efefef;
