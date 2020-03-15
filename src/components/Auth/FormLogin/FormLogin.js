@@ -8,13 +8,11 @@ import Icon from "../../UI/IconEye/Icon";
 import MainButton from "../../UI/Buttons/MainButton/MainButton";
 import withClass from "../../hoc/withClass/withClass";
 import Wrapper from "../../hoc/Wrapper/Wrapper";
-import {FirebaseContext} from "../../Context/firebaseContext/FirebaseContext";
 
 const FormLogin = ({showPasswordOrText, eyeShowHide, checkEye, history}) => {
-  const {users, presence, getDataUsersOnline, login} = firebase;
+  const {users, presence, login} = firebase;
   const {hidePreloader, showPreloader} = useContext(PreloaderContext);
   const {setCurrentUser} = useContext(AuthContext);
-  const {setDataUsersOnline} = useContext(FirebaseContext);
   const [isOpen, setIsOpen] = useState(false),
       [messageErrEmailOrUser, setMessageErrEmailOrUser] = useState("Error username or password"),
       [title, setTitle] = useState("Error username or password"),

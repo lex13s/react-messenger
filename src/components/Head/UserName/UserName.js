@@ -7,7 +7,7 @@ const UserName = ({className, name}) => {
       className, name
   );
   return (
-      <section className={classes} key={`${name}_${className}`}>
+      <section className={classes}>
         {name}
       </section>
   )

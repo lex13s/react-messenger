@@ -30,7 +30,10 @@ const ContactCards = ({usersList, currentUser, dataUsersOnline, createChatKey, s
                      history.push(`/home/${chatKey}/`);
                    }}>
 
-            <Avatar className='contacts-card' user={user} key={`contacts-card-avatar_${user}`}/>
+            <Avatar className='contacts-card'
+                    user={user}
+                    key={`contacts-card-avatar_${user}`}
+                    status={data[user] ? 'status_online' : 'status_offline'}/>
 
             <div className="contacts-card__info">
               <div className="contacts-card__info-items">

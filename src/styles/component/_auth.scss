@@ -1,26 +1,26 @@
 .authorisation {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: $bgMain;
-  overflow: hidden;
 }
 
 .sign-in-up-form {
   position: relative;
-  height: 480px;
+  height: 510px;
   width: 380px;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 16px #ccc;
-  font-family: sans-serif;
   letter-spacing: 1px;
   background-color: #fff;
-  opacity: 0.9;
-  overflow: hidden;
+  opacity: 0.85;
+  overflow: auto;
 }
 
 .form-tabs {

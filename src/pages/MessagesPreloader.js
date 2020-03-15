@@ -1,7 +1,7 @@
 import React from "react";
 import {useDencrypt} from "use-dencrypt-effect";
 
-const values = ["Никнейм разработчика - 1admin, пишите ;)"];
+const values = ["А могла быть Ваша реклама ;)"];
 const MessagesPreloader = () => {
   const {result, dencrypt} = useDencrypt();
   React.useEffect(() => {

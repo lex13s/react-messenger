@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Status = (props) => {
+const Status = ({className, status, isActive}) => {
   return (
-      <section className={props.className}>
-        <section className={props.status}>
+      <section className={`${className} ${isActive}`}>
+        <section className={status}>
           <svg xmlns="http://www.w3.org/2000/svg" height="512px" viewBox="0 -32 512.00011 512" width="512px">
             <g>
               <path

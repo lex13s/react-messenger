@@ -120,12 +120,6 @@
 
 }
 
-.messages-footer__emoji {
-  height: 100%;
-  width: 100%;
-  border-radius: 25px;
-}
-
 .fa-smile-wink {
   height: 40px;
   width: 40px;
@@ -143,17 +137,19 @@
   height: 38px;
   width: 100%;
   border-radius: 20px;
-  @include font-style($dark_color, 16px, 18px, 400);
+  @include font-style($dark_color, 12px, 1, 400);
   overflow: hidden;
   resize: none;
-
   background: $light_grey_color;
-  padding: 10px 20px;
+  padding: 7px 20px;
   border: 1px solid $light_grey_color;
 
   &:focus {
     outline: none;
     border-color: $red_color;
+  }
+  &::placeholder {
+    text-align: center;
   }
 }
 
@@ -204,6 +200,15 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+  }
+  .messages-footer__send-area {
+    @include font-style($dark_color, 16px, 1, 400);
+    padding: 7px 20px;
+
+    &::placeholder {
+      padding-top: 5px;
+      text-align: center;
+    }
   }
 }
 

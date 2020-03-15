@@ -17,7 +17,7 @@ body {
   display: grid;
   grid-gap: 15px;
   padding: 10px;
-  grid-template-columns: 7fr 10fr;
+  grid-template-columns: 1fr auto;
   background: #fff;
   position: relative;
 }
@@ -75,8 +75,8 @@ body {
 .header__chat-name {
   margin: 0;
   color: #333;
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 1.1rem;
+  line-height: 1;
   font-weight: 600;
   text-transform: uppercase;
   display: flex;
@@ -123,6 +123,9 @@ body {
 .header__status .status_offline svg g path {
   fill: #ef314c;
 }
+.header__status.hide {
+  display: none;
+}
 
 .contacts-card__user-name_in-header {
   color: #333;
@@ -134,6 +137,7 @@ body {
 
 @media (min-width: 996px) {
   .header {
+    grid-template-columns: 7fr 10fr;
     grid-gap: 26px;
     align-items: center;
     background: #efefef;
@@ -388,12 +392,6 @@ body {
   padding: 7px 0;
 }
 
-.messages-footer__emoji {
-  height: 100%;
-  width: 100%;
-  border-radius: 25px;
-}
-
 .fa-smile-wink {
   height: 40px;
   width: 40px;
@@ -412,18 +410,21 @@ body {
   width: 100%;
   border-radius: 20px;
   color: #333;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 1;
   font-weight: 400;
   overflow: hidden;
   resize: none;
   background: #efefef;
-  padding: 10px 20px;
+  padding: 7px 20px;
   border: 1px solid #efefef;
 }
 .messages-footer__send-area:focus {
   outline: none;
   border-color: #ef314c;
+}
+.messages-footer__send-area::placeholder {
+  text-align: center;
 }
 
 .button-send-wrap {
@@ -480,6 +481,18 @@ body {
     align-items: center;
     justify-content: center;
   }
+
+  .messages-footer__send-area {
+    color: #333;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 400;
+    padding: 7px 20px;
+  }
+  .messages-footer__send-area::placeholder {
+    padding-top: 5px;
+    text-align: center;
+  }
 }
 .wrapOverlay {
   background-color: rgba(0, 0, 0, 0.4);
@@ -495,28 +508,28 @@ body {
 }
 
 .authorisation {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(-45deg, #912416 0%, #211d1d 0%, #681a10 87%, #742319 100%);
-  overflow: hidden;
 }
 
 .sign-in-up-form {
   position: relative;
-  height: 480px;
+  height: 510px;
   width: 380px;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 16px #ccc;
-  font-family: sans-serif;
   letter-spacing: 1px;
   background-color: #fff;
-  opacity: 0.9;
-  overflow: hidden;
+  opacity: 0.85;
+  overflow: auto;
 }
 
 .form-tabs {
@@ -1020,6 +1033,12 @@ body {
   text-transform: uppercase;
   border-radius: 50%;
   margin-right: 15px;
+}
+.avatar-item.status_online {
+  color: #71bf23;
+}
+.avatar-item.status_offline {
+  color: #ef314c;
 }
 
 .header-avatar_wrap {

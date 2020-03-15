@@ -28,11 +28,16 @@ const Head = ({user, className, status, backContacts, isActiveMessages, showStat
         <div className='header-user-wrap'>
           <div className="header-avatar_wrap">
 
-            {<Avatar className='header-avatar' user={showFriendAvatar || currentUser || ''}/>}
+            <Avatar className='header-avatar'
+                    user={showFriendAvatar || currentUser || ''}
+                    status={status}/>
 
-            <UserName className={className} name={isActiveMessages === 'hide' && user || ''}/>
+            <UserName className={className}
+                      name={isActiveMessages === 'hide' && user || ''}/>
           </div>
-          <Status className={`${showStatusFriend} header__status`} status={status}/>
+          <Status className={`${showStatusFriend} header__status`}
+                  isActive={isActiveMessages === 'hide' && user || ''}
+                  status={status}/>
         </div>
       </header>
   )

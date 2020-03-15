@@ -3,7 +3,7 @@
   display: grid;
   grid-gap: 15px;
   padding: 10px;
-  grid-template-columns: 7fr 10fr;
+  grid-template-columns: 1fr auto;
   background: #fff;
   position: relative;
 
@@ -64,7 +64,7 @@
 
 .header__chat-name {
   margin: 0;
-  @include font-style($dark_color, 18px, 18px, 600);
+  @include font-style($dark_color, $L_FontSize, 1, 600);
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -115,6 +115,9 @@
       fill: $red_color;
     }
   }
+  &.hide {
+    display: none;
+  }
 }
 
 .contacts-card__user-name_in-header {
@@ -125,7 +128,7 @@
 
 @media (min-width: $pc) {
   .header {
-    //grid-template-columns: 7fr 10fr;
+    grid-template-columns: 7fr 10fr;
     grid-gap: 26px;
     align-items: center;
     background: #efefef;

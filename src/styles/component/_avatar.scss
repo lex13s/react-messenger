@@ -25,6 +25,12 @@
   text-transform: uppercase;
   border-radius: 50%;
   margin-right: 15px;
+  &.status_online {
+      color: $green_color;
+  }
+  &.status_offline {
+      color: $red_color;
+  }
 }
 
 .header-avatar_wrap {
