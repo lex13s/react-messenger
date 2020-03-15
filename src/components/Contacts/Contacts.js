@@ -8,22 +8,18 @@ import MessagesPreloader from "../../pages/MessagesPreloader";
 import {Redirect} from 'react-router-dom';
 
 const Contacts = ({firebaseInitialized, dataUsersOnline, currentUser}) => {
-
   const {usersList, createChatKey} = useContext(FirebaseContext);
   const [show, setShow] = useState('show');
   const [userFriend, setUserFriend] = useState();
   const [chatKey, setChatKey] = useState();
   const [showMessage, setShowMessage] = useState();
-
   let classContacts = classNames(
       'contacts',
       'contacts-wrap',
   );
-
   useEffect(() => {
     if (userFriend && chatKey) setShowMessage(true)
   }, [userFriend, chatKey]);
-
   return firebaseInitialized ? (
       <>
         <Head className="contacts-card__user-name_in-header"
@@ -33,7 +29,6 @@ const Contacts = ({firebaseInitialized, dataUsersOnline, currentUser}) => {
               isActiveMessages={show}
               showStatus={show}
               currentUser={currentUser}/>
-
 
         <main className='main'>
           <nav className={`${classContacts} ${show}`}>

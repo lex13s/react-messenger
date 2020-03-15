@@ -57,12 +57,11 @@ class Firebase {
   async login(email, password, name, history) {
     try {
       await app.auth().signInWithEmailAndPassword(email, password);
-
       await app.auth().currentUser.updateProfile({
         displayName: name
       });
       history.push('/home/');
-    }catch (e) {
+    } catch (e) {
       console.log(e)
     }
   }
@@ -90,8 +89,8 @@ class Firebase {
     const quote = await this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).get();
     return quote.get('quote')
   }
+
   getCurrentUsername() {
-    // return app.auth().currentUser && app.auth().currentUser.displayName
     if (app.auth().currentUser) {
       return app.auth().currentUser.displayName
     } else {

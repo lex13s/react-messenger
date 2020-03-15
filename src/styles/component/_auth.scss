@@ -48,7 +48,6 @@
   transition: 0.6s;
   box-shadow: 0 0 5px 2px rgba(91, 128, 93, 0.73);
   opacity: 1;
-  //animation: backgroundChange 3s alternate-reverse infinite;
 }
 
 .form-tabs__btn {
@@ -108,6 +107,7 @@
 
 .credentials-form-item_label {
   cursor: pointer;
+
   span {
     padding-left: 5px;
   }

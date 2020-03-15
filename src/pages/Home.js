@@ -18,7 +18,6 @@ const Home = () => {
       setFirebaseInitialized(val);
     });
   });
-
   useEffect(() => {
     if (!dataUsersOnline ?? currentUser) {
       presence.child(`/${currentUser}`).update({
@@ -29,33 +28,20 @@ const Home = () => {
       presence.on('child_added', snapshot => {
         getDataUsersOnline().then((snapshot) => {
           setDataUsersOnline(snapshot);
-        })
+        });
       });
       presence.on('child_removed', snapshot => {
         getDataUsersOnline().then((snapshot) => {
           setDataUsersOnline(snapshot);
-        })
+        });
       });
     }
   });
-
   useEffect(() => {
-    // if (firebaseInitialized) {
-    //   getDataUsersOnline().then((data) => {
-    //     let users = Object.keys(data);
-    //     console.log(data);
-    //     setDataUsersOnline(() => users);
-    //   });
-    //   hidePreloader();
-    // } else {
-    //   showPreloader()
-    // }
     firebaseInitialized ? hidePreloader() : showPreloader();
   }, []);
-
   return firebaseInitialized ?
       <Contacts firebaseInitialized={firebaseInitialized} dataUsersOnline={dataUsersOnline} currentUser={currentUser}/>
       : <Redirect to="/"/>
 };
-
 export default withRouter(Home);

@@ -1,14 +1,24 @@
-.main {
-  width: 100%;
-  height: 100vh;
-  padding-top: 55px;
+::-webkit-scrollbar {
+  width: 5px;
 }
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: $dark_color; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+
 @media (min-width: $pc) {
-  .main {
-    display: flex;
-    height: 92vh;
-    margin: 0 auto;
-    max-width: 1200px;
-    padding-top: 0;
-  }
+	.main {
+		height: calc(100vh - 60px);
+		width: 100%;
+		display: grid;
+		grid-template-columns: 40% 60%;
+	}
 }

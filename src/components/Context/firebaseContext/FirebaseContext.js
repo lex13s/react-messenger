@@ -9,14 +9,12 @@ export const FirebaseProvide = ({children}) => {
   const [usersList, setUsersList] = useState();
   const [dataUsersOnline, setDataUsersOnline] = useState();
   const [dataMessages, setDataMessages] = useState();
-
   useEffect(() => {
     getDataUsers().then((data) => {
       let users = Object.keys(data);
       setUsersList(users);
     });
   }, [dataUsersOnline]);
-
   useEffect(() => {
     messages.on('value', snapshot => {
       setDataMessages(snapshot.val());

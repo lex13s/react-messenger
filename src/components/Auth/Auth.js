@@ -7,21 +7,17 @@ import {PreloaderContext} from '../Context/preloaderContext/preloaderContext';
 import {ModalContext} from '../Context/modalContext/modalContext';
 
 const Auth = ({history}) => {
-
   const {modalHide, modalShow} = useContext(ModalContext);
   const {hidePreloader, showPreloader} = useContext(PreloaderContext);
   const [isActive, setIsActive] = useState();
-
   useEffect(() => {
     hidePreloader();
   });
-
   const [styleButtonTabSignIn, setStyleButtonTabSignIn] = useState({}),
       [styleButtonTabRegister, setStyleButtonRegister] = useState({}),
       [styleTabsSlider, setStyleTabsSlider] = useState({}),
       [formLoginStyle, setFormLoginStyle] = useState({}),
       [formRegisterStyle, setFormRegisterStyle] = useState({});
-
   useEffect(() => {
     if (isActive) {
       setStyleTabsSlider({
@@ -60,10 +56,8 @@ const Auth = ({history}) => {
       });
     }
   }, [isActive]);
-
   const [eyeShowHide, setEyeShowHide] = useState(true); //
   const [showPasswordOrText, setShowPasswordOrText] = useState('password');
-
   const checkEye = () => {
     setEyeShowHide(!eyeShowHide);
     if (showPasswordOrText === "password") {
@@ -72,7 +66,6 @@ const Auth = ({history}) => {
       setShowPasswordOrText('password');
     }
   };
-
   return (
       <section className="authorisation">
         <div className="sign-in-up-form">
@@ -101,5 +94,4 @@ const Auth = ({history}) => {
       </section>
   )
 };
-
 export default withRouter(Auth);

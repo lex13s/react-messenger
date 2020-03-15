@@ -8,7 +8,7 @@ const ButtonSend = ({onClick, disabled}) => {
                 onClick={(event) => onClick(event)}
                 disabled={disabled}
         >
-          ⬑
+          Meow!
         </button>
       </section>
   )

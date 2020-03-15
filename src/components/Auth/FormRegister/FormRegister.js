@@ -5,8 +5,7 @@ import MainButton from '../../UI/Buttons/MainButton/MainButton';
 import Icon from '../../UI/IconEye/Icon';
 import withClass from '../../hoc/withClass/withClass';
 import Wrapper from '../../hoc/Wrapper/Wrapper';
-//import app from "../../../services/initFirebase";
-//import app from '../../../services/initFirebase'
+
 class FormRegister extends Component {
   constructor(props) {
     super(props);
@@ -141,16 +140,9 @@ class FormRegister extends Component {
     this.setState({dataInput, formValid})
   };
 
-  onRegister = (name, email, password)=> {
-    // try {
+  onRegister = (name, email, password) => {
     firebase.registerInFirebase(name, email, password)
-    //await firebase.addQuote(quote)
-    //props.history.replace('/dashboard')
-    // } catch(error) {
-    //   alert(error.message)
-    // }
   };
-
   registration = (event, name, email, password, showPreloader, hidePreloader, modalShow, modalHide, users, setIsActive) => {
     event.preventDefault();
     showPreloader(3);
@@ -176,10 +168,6 @@ class FormRegister extends Component {
     users.once("value", (snapshot) => {
           const dataUsers = snapshot.val();
           if (checkLoginToDatabase(dataUsers) && checkEmailToDatabase(dataUsers)) {
-            //================
-            //Firebase.registerInFirebase(name, email, password);
-            //ошибки можно не обрабатывать, тк проввверили
-            //==============
             const newUser = users.child(`/${name}`);
             newUser.update({
               userName: name,
@@ -187,16 +175,7 @@ class FormRegister extends Component {
               password: password,
             });
             hidePreloader();
-            //==============
-            //registerInFirebase(email, password)
-            // firebase.registerInFirebase(email, password)
-            //     .catch(function (e) {
-            //       new Error(e);
-            //       console.log(e);
-            //     });
-            //==========
             this.onRegister(email, password);
-
             modalShow(`Поздравляем!`, `Пользователь "${name}" успешно зарегистрирован! Просьба войти в систему`);
             setIsActive((preAction) => !preAction);
           }
@@ -206,7 +185,6 @@ class FormRegister extends Component {
 
   render() {
     const {users} = firebase;
-    //const {firebase} = app;
     const {showPasswordOrText, eyeShowHide, checkEye, hidePreloader, showPreloader, modalHide, modalShow, setIsActive} = this.props;
     const inputRender = () => {
       const inputs = Object.keys(this.state.dataInput).map((elem, index) => {

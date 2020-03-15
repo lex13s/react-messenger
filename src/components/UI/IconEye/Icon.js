@@ -25,7 +25,6 @@ const Icon = ({
       </>
   )
 };
-
 Icon.propTypes = {
   classNames: PropTypes.string,
   name: PropTypes.string,
@@ -40,5 +39,4 @@ Icon.defaultProps = {
   onClick: null,
   disabled: false,
 };
-
 export default Icon;
