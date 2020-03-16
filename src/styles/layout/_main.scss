@@ -14,10 +14,17 @@
   background: #b30000; 
 }
 
+.main {
+	overflow-x: hidden;
+	//====
+	padding-top: 60px;
+}
+
 @media (min-width: $pc) {
 	.main {
 		height: calc(100vh - 60px);
 		width: 100%;
+		padding-top: 0;
 		display: grid;
 		grid-template-columns: 40% 60%;
 	}

@@ -36,6 +36,7 @@
 
 .messages-preloader {
   display: none;
+  overflow: hidden;
 }
 
 .my-message-wrap, .friend-message-wrap {
@@ -192,7 +193,7 @@
 @media (min-width: $pc) {
   .messages-preloader {
     display: block;
-    padding: 0 10px;
+    //padding: 0 10px;
   }
   .messages-preloader__title {
     display: flex;

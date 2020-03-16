@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   background: $bgMain;
+  overflow: auto;
 }
 
 .sign-in-up-form {
@@ -20,7 +21,6 @@
   letter-spacing: 1px;
   background-color: #fff;
   opacity: 0.85;
-  overflow: auto;
 }
 
 .form-tabs {
