@@ -1,5 +1,6 @@
 .contacts {
   height: calc(100vh - 60px);
+  //margin-top: 60px;
   overflow-y: auto;
 }
 .contacts-card {
@@ -88,6 +89,10 @@
 }
 
 @media (min-width: $pc) {
+  .contacts {
+    //margin-top: 0;
+  }
+
   .contacts.hide {
     display: block;
   }

@@ -25,7 +25,7 @@
   overflow: auto;
   position: relative;
   padding: 10px 20px;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 
   &_inner {
     display: grid;
@@ -98,11 +98,15 @@
 }
 
 .messages-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  //position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, .3);
-  position: relative;
+  background-color: rgba(255, 255, 255, 1);
 
   form {
     width: 100%;
@@ -201,6 +205,12 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+  }
+  .messages-text {
+    margin-bottom: 10px;
+  }
+  .messages-footer {
+    position: relative;
   }
   .messages-footer__send-area {
     @include font-style($dark_color, 16px, 1, 400);

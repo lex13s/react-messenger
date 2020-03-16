@@ -23,6 +23,7 @@ body {
   padding: 10px;
   grid-template-columns: 5fr 4fr;
   background: #fff;
+  z-index: 100;
 }
 .header::before {
   content: "";
@@ -311,7 +312,7 @@ body {
   overflow: auto;
   position: relative;
   padding: 10px 20px;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 .messages-text_inner {
   display: grid;
@@ -382,11 +383,14 @@ body {
 }
 
 .messages-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.3);
-  position: relative;
+  background-color: white;
 }
 .messages-footer form {
   width: 100%;
@@ -490,6 +494,14 @@ body {
     height: 100%;
     align-items: center;
     justify-content: center;
+  }
+
+  .messages-text {
+    margin-bottom: 10px;
+  }
+
+  .messages-footer {
+    position: relative;
   }
 
   .messages-footer__send-area {
