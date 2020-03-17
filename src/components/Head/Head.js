@@ -23,7 +23,7 @@ const Head = ({user, className, status, backContacts, isActiveMessages, showStat
         />
         <div className={`header-kitty-wrap ${isActiveMessages}`}>
           <img className="header-kitty" src="https://clipartart.com/images/angery-cat-clipart-3.png" alt='chat avatar'/>
-          <h1 className={`header__chat-name ${showStatus}`}>{`React chat `}<span>by Alex</span></h1>
+          <h1 className={`header__chat-name ${showStatus}`}>Kitty chat<span>by Alex</span></h1>
         </div>
         <div className='header-user-wrap'>
           <div className="header-avatar_wrap">

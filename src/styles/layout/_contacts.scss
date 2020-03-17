@@ -90,7 +90,7 @@
 
 @media (min-width: $pc) {
   .contacts {
-    //margin-top: 0;
+    border-left: 1px solid $dark_color;
   }
 
   .contacts.hide {

@@ -53,7 +53,7 @@ const FormLogin = ({showPasswordOrText, eyeShowHide, checkEye, history}) => {
         });
         presence.child(`/${name}`).onDisconnect().remove();
         setCurrentUser(name);
-        hidePreloader();
+        //hidePreloader();
         login(email, password, name, history);
       }
     });

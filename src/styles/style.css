@@ -78,10 +78,10 @@ body {
 
 .header__chat-name {
   margin: 0;
-  color: #333;
   font-size: 1.1rem;
-  line-height: 1;
+  font-family: "La Belle", "Aurore", cursive;
   font-weight: 600;
+  color: #333;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -142,10 +142,14 @@ body {
 @media (min-width: 996px) {
   .header {
     position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
     grid-template-columns: 7fr 10fr;
     grid-gap: 26px;
     align-items: center;
     background: #efefef;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
   }
 
   .btn-come-back {
@@ -188,9 +192,12 @@ body {
   .main {
     height: calc(100vh - 60px);
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding-top: 0;
     display: grid;
     grid-template-columns: 40% 60%;
+    border-right: 1px solid #333;
   }
 }
 .contacts {
@@ -276,6 +283,10 @@ body {
 }
 
 @media (min-width: 996px) {
+  .contacts {
+    border-left: 1px solid #333;
+  }
+
   .contacts.hide {
     display: block;
   }
@@ -327,10 +338,10 @@ body {
 
 .my-message-wrap, .friend-message-wrap {
   display: flex;
+  overflow: hidden;
 }
 .my-message-wrap .container-inline, .friend-message-wrap .container-inline {
   border-radius: 8px;
-  max-width: 80%;
   background: #e0ffc1;
   padding: 10px;
   position: relative;
@@ -357,6 +368,9 @@ body {
   font-weight: 400;
   margin: 0;
   padding-bottom: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .my-message-wrap .message-item__time, .friend-message-wrap .message-item__time {
   min-width: 10%;
@@ -381,6 +395,11 @@ body {
   left: -19px;
   transform: rotate(89deg);
 }
+.friend-message-wrap p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
 .messages-footer {
   position: fixed;
@@ -390,7 +409,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .messages-footer form {
   width: 100%;

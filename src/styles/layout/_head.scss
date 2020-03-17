@@ -69,7 +69,7 @@
 
 .header__chat-name {
   margin: 0;
-  @include font-style($dark_color, $L_FontSize, 1, 600);
+  @include fontSize($L_FontSize, $cursiveFontFamily, $dark_color, 600);
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -134,10 +134,14 @@
 @media (min-width: $pc) {
   .header {
     position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
     grid-template-columns: 7fr 10fr;
     grid-gap: 26px;
     align-items: center;
     background: #efefef;
+    border-left: 1px solid $dark_color;
+    border-right: 1px solid $dark_color;
   }
   .btn-come-back {
     display: none;

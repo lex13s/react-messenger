@@ -7,6 +7,7 @@
   background: center url(https://i.pinimg.com/originals/17/a6/31/17a631d4eda3f5f6636efac0e79c9473.jpg);
   position: relative;
   overflow-y: auto;
+
   &::before {
     content: '';
     position: absolute;
@@ -41,10 +42,10 @@
 
 .my-message-wrap, .friend-message-wrap {
   display: flex;
+  overflow: hidden;
 
   .container-inline {
     border-radius: 8px;
-    max-width: 80%;
     background: #e0ffc1;
     padding: 10px;
     position: relative;
@@ -70,6 +71,9 @@
     @include font-style($dark_color, 14px, 16px, 400);
     margin: 0;
     padding-bottom: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .message-item__time {
@@ -83,6 +87,7 @@
 }
 
 .friend-message-wrap {
+
   .container-inline {
     background: #fff;
     margin-left: inherit;
@@ -95,6 +100,12 @@
       transform: rotate(89deg);
     }
   }
+
+  p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }
 
 .messages-footer {
@@ -102,11 +113,10 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  //position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.3);
 
   form {
     width: 100%;
@@ -153,6 +163,7 @@
     outline: none;
     border-color: $red_color;
   }
+
   &::placeholder {
     text-align: center;
   }
@@ -197,7 +208,6 @@
 @media (min-width: $pc) {
   .messages-preloader {
     display: block;
-    //padding: 0 10px;
   }
   .messages-preloader__title {
     display: flex;

@@ -24,8 +24,11 @@
 	.main {
 		height: calc(100vh - 60px);
 		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
 		padding-top: 0;
 		display: grid;
 		grid-template-columns: 40% 60%;
+		border-right: 1px solid $dark_color;
 	}
 }
