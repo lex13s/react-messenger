@@ -25,7 +25,6 @@ const MainButton = ({
       </Tag>
   );
 };
-
 MainButton.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
@@ -41,5 +40,4 @@ MainButton.defaultProps = {
   disabled: false,
   active: false
 };
-
 export default MainButton;

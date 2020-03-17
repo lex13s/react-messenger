@@ -9,9 +9,7 @@ const MessagesItem = ({author, text, timestamp, user}) => {
                  key={author + timestamp}
         >
           <section className={'container-inline'}>
-            <section className={`message-item__${author}`}>
-              <p>{text}</p>
-            </section>
+            <p>{text}</p>
             <section className="message-item__time">{timeLastMessage}</section>
           </section>
         </section>

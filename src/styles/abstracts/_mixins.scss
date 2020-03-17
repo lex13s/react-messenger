@@ -5,6 +5,13 @@
   color: $color;
 }
 
+@mixin font-style($color, $fz, $lh, $fw) {
+  color: $color;
+  font-size: $fz;
+  line-height: $lh;
+  font-weight: $fw;
+}
+
 @mixin borderContactsCard($color: darkgrey) {
   border-bottom: 1px solid $color;
 }
@@ -12,7 +19,6 @@
 @mixin userStatus($color) {
   width: 8px;
   height: 8px;
-
   border-radius: 50%;
   background: $color;
 }

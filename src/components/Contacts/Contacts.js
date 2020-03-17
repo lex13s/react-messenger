@@ -1,16 +1,14 @@
 import React, {useContext, useState, useEffect} from 'react';
 import classNames from 'classname';
 import {FirebaseContext} from "../Context/firebaseContext/FirebaseContext";
-import {AuthContext} from "../Context/authContext/AuthContext";
 import Head from "../Head/Head";
 import Messages from "../Messages/Messages";
 import ContactCards from "../ContactCard/ContactCards";
 import MessagesPreloader from "../../pages/MessagesPreloader";
+import {Redirect} from 'react-router-dom';
 
-const Contacts = () => {
-
-  const {usersList, dataUsersOnline, createChatKey} = useContext(FirebaseContext);
-  const {currentUser} = useContext(AuthContext);
+const Contacts = ({firebaseInitialized, dataUsersOnline, currentUser}) => {
+  const {usersList, createChatKey} = useContext(FirebaseContext);
   const [show, setShow] = useState('show');
   const [userFriend, setUserFriend] = useState();
   const [chatKey, setChatKey] = useState();
@@ -22,15 +20,15 @@ const Contacts = () => {
   useEffect(() => {
     if (userFriend && chatKey) setShowMessage(true)
   }, [userFriend, chatKey]);
-
-  return (
+  return firebaseInitialized ? (
       <>
         <Head className="contacts-card__user-name_in-header"
               user={userFriend}
               status={userFriend && dataUsersOnline[userFriend] ? 'status_online' : 'status_offline'}
               backContacts={setShow}
               isActiveMessages={show}
-              showStatus={show}/>
+              showStatus={show}
+              currentUser={currentUser}/>
 
         <main className='main'>
           <nav className={`${classContacts} ${show}`}>
@@ -43,10 +41,9 @@ const Contacts = () => {
                           setChatKey={setChatKey}/>
           </nav>
 
-          {/*{showMessage && <Messages user={currentUser} chatKey={chatKey} isActive={show}/> || <div className='messages-preloader' style={ {'fontSize': '1.2rem'}}>Для начала чата кликните на любом пользователе</div>}*/}
           {showMessage && <Messages user={currentUser} chatKey={chatKey} isActive={show}/> || <MessagesPreloader/>}
         </main>
       </>
-  )
+  ) : <Redirect to="/"/>
 };
 export default Contacts;

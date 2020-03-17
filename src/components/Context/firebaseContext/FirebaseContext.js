@@ -5,21 +5,16 @@ import {AuthContext} from "../authContext/AuthContext";
 export const FirebaseContext = React.createContext();
 export const FirebaseProvide = ({children}) => {
   const {currentUser} = useContext(AuthContext);
-  const {messages} = Firebase;
-  const {getDataUsers} = Firebase;
-  const [dataUsers, setDataUsers] = useState();
+  const {messages, getDataUsers} = Firebase;
   const [usersList, setUsersList] = useState();
   const [dataUsersOnline, setDataUsersOnline] = useState();
   const [dataMessages, setDataMessages] = useState();
-
   useEffect(() => {
     getDataUsers().then((data) => {
-      setDataUsers(data);
       let users = Object.keys(data);
       setUsersList(users);
     });
   }, [dataUsersOnline]);
-
   useEffect(() => {
     messages.on('value', snapshot => {
       setDataMessages(snapshot.val());
@@ -37,7 +32,6 @@ export const FirebaseProvide = ({children}) => {
   return (
       <FirebaseContext.Provider
           value={{
-            dataUsers,
             usersList,
             dataMessages,
             setDataMessages,

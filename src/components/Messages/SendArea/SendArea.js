@@ -29,6 +29,7 @@ const SendArea = ({chatKey, currentUser}) => {
     });
     setMessage('');
   }
+
   function sendMessageWithKeyboard(event) {
     if (event.keyCode === 13) {
       setKeyEnter(prevState => !prevState);
@@ -36,7 +37,7 @@ const SendArea = ({chatKey, currentUser}) => {
     if (event.keyCode === 17) {
       setKeyCtrl(prevState => !prevState);
     }
-    if (keyEnter && keyCtrl){
+    if (keyEnter && keyCtrl) {
       sendMessage(event);
     }
   }

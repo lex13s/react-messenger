@@ -1,11 +1,34 @@
-.main {
-  width: 100%;
-  height: 92vh;
+::-webkit-scrollbar {
+  width: 5px;
 }
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: $dark_color; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+
+.main {
+	overflow-x: hidden;
+	//====
+	padding-top: 60px;
+}
+
 @media (min-width: $pc) {
-  .main {
-    display: flex;
-    margin: 0 auto;
-    max-width: 1200px;
-  }
+	.main {
+		height: calc(100vh - 60px);
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding-top: 0;
+		display: grid;
+		grid-template-columns: 40% 60%;
+		border-right: 1px solid $dark_color;
+	}
 }

@@ -1,0 +1,57 @@
+.avatar {
+  position: relative;
+
+  img {
+    position: absolute;
+    left: 0;
+    width: 27px;
+    height: 27px;
+    top: -10px;
+  }
+}
+
+.avatar-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  flex-basis: 25px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  background: $dark_color;
+  @include font-style(#fff, 16px, 16px, 700);
+  border: 1px solid $dark_color;
+  text-transform: uppercase;
+  border-radius: 50%;
+  margin-right: 15px;
+  &.status_online {
+      color: $green_color;
+  }
+  &.status_offline {
+      color: $red_color;
+  }
+}
+
+.header-avatar_wrap {
+  display: flex;
+  align-items: center;
+}
+
+.header-avatar__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 39px;
+  height: 39px;
+  flex-basis: 39px;
+  margin: 0 auto;
+  flex-shrink: 0;
+  flex-grow: 0;
+  background: $dark_color;
+  @include font-style(#fff, 16px, 16px, 700);
+  border: 1px solid $dark_color;
+  text-transform: uppercase;
+  border-radius: 50%;
+  box-shadow: $box-shadow;
+}

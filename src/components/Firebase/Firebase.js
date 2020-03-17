@@ -2,7 +2,7 @@ import app from '../../services/initFirebase';
 
 class Firebase {
   constructor() {
-    this.auth = app.auth();
+    this.auth = app.auth;
     this.db = app.database();
     this.presence = app.database().ref('presence/');
     this.users = app.database().ref('users/');
@@ -45,18 +45,25 @@ class Firebase {
     }
   }
 
-  async registerInFirebase(name, email, password) {
-    await this.auth.createUserWithEmailAndPassword(email, password)
-    return this.auth.currentUser.updateProfile({
-      displayName: name
-    })
+  async registerInFirebase(email, password) {
+    try {
+      await app.auth().createUserWithEmailAndPassword(email, password);
+    } catch (e) {
+      new Error(e);
+      console.log(e);
+    }
   }
 
-  async login(name, email, password) {
-    await this.auth.signInWithEmailAndPassword(email, password)
-    return this.auth.currentUser.updateProfile({
-      displayName: name
-    })
+  async login(email, password, name, history) {
+    try {
+      await app.auth().signInWithEmailAndPassword(email, password);
+      await app.auth().currentUser.updateProfile({
+        displayName: name
+      });
+      history.push('/home/');
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   logout() {
@@ -74,13 +81,21 @@ class Firebase {
 
   isInitialized() {
     return new Promise(resolve => {
-      this.auth.onAuthStateChanged(resolve)
+      app.auth().onAuthStateChanged(resolve)
     })
   }
 
   async getCurrentUserQuote() {
     const quote = await this.db.doc(`users_codedamn_video/${this.auth.currentUser.uid}`).get();
     return quote.get('quote')
+  }
+
+  getCurrentUsername() {
+    if (app.auth().currentUser) {
+      return app.auth().currentUser.displayName
+    } else {
+      return null
+    }
   }
 }
 

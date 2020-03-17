@@ -1,111 +1,107 @@
-.contacts-wrap {
-  min-height: 92vh;
-  width: 100%;
-  overflow: auto;
-  box-shadow: 0 4px 16px #ccc;
+.contacts {
+  height: calc(100vh - 60px);
+  //margin-top: 60px;
+  overflow-y: auto;
 }
-
 .contacts-card {
-  display: grid;
-  grid-template: "avatar           user-name           time-last-message      status" 1fr "avatar           last-message        time-last-message      status" 1fr
-								/ 	15% 60% 20% 5%;
+  height: 60px;
+  padding: 15px 20px;
+  border-bottom: 1px solid $dark_color;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 
-  width: 100%;
-  height: 50px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  background-color: $bgContactsCard;
-  @include borderContactsCard;
+    &-items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &:last-child {
+        margin-top: 6px;
+      }
+
+      &:empty {
+        display: none;
+      }
+    }
+  }
 
   &:hover {
-    transform: scale(1.02);
-    border-top: 1px solid darkgrey;
+    background: #f1f1f1;
   }
 }
 
-.contacts-card-avatar {
-  grid-area: avatar;
-}
-
-.contacts-card-avatar__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 8px;
-  padding-right: 2px;
-  width: 40px;
-  height: 40px;
-  margin: 0 auto;
-  border-radius: 50%;
-  background: $bgMain;
-  font-family: "La Belle Aurore", cursive;
-  color: #FFFFFF;
-  font-size: $L_FontSize;
-}
-
 .contacts-card__user-name {
-  grid-area: user-name;
-  @include fontSize($L_FontSize, $cursiveFontFamily, #361617, $fontW: bold);
+
+  @include font-style($dark_color, 16px, 16px, 700);
+}
+
+.contacts-card__status {
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .status_online {
+    svg g path {
+      fill: $green_color;
+    }
+  }
+
+  .status_offline {
+    svg g path {
+      fill: $red_color;
+    }
+  }
+}
+
+.contacts-card__last-message,
+.contacts-card__time-last-message {
+  @include font-style(#bbb, 12px, 12px, 400);
 }
 
 .contacts-card__last-message {
-  grid-area: last-message;
+  max-width: 210px;
+  height: 12px;
   text-overflow: ellipsis;
-  @include fontSize($S_FontSize, $cursiveFontFamily, black, $fontW: italic);
-  font-style: italic;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.contacts-card__status {
-  grid-area: status;
-  padding-right: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .status_online {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #3fbb3e;
-  }
-
-  .status_offline {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: red;
-  }
-}
-
 .contacts-card__time-last-message {
-  grid-area: time-last-message;
-  min-width: 60px;
-  max-width: 110px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding-left: 5px;
-  padding-right: 5px;
-  @include fontSize(0.6rem, $secondFontFamily);
+  min-width: 87px;
 }
 
 @media (min-width: $pc) {
   .contacts {
-    width: 40%;
-    max-width: 1200px;
+    border-left: 1px solid $dark_color;
   }
-  .contacts-card {
-    &:hover {
-      cursor: pointer;
-    }
-  }
+
   .contacts.hide {
     display: block;
   }
-  .contacts-card__time-last-message {
-    width: 96px;
-    padding-left: 10px;
+  .contacts-card__user-name_in-header {
+    max-width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
+
 }
+
+

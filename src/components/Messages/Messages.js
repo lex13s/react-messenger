@@ -1,14 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import MessagesItem from "./MessagesItem/MassagesItem";
-//import Emoji from "./Emoji/Emoji";
 import SendArea from "./SendArea/SendArea";
-import {FirebaseContext} from "../Context/firebaseContext/FirebaseContext";
+import Firebase from "../Firebase/Firebase";
 
 const Messages = ({user, chatKey, isActive}) => {
-  const {dataMessages} = useContext(FirebaseContext);
+  const {messages} = Firebase;
   const showMessages = isActive === 'show' ? 'hide' : 'show';
-
   const messagesRender = () => {
+    let dataMessages = {};
+    messages.on('value', snapshot => {
+      dataMessages = snapshot.val();
+    });
     if (dataMessages[chatKey]) {
       const message = Object.values(dataMessages[chatKey].messages).map((e, i) => {
         return (
@@ -24,16 +26,16 @@ const Messages = ({user, chatKey, isActive}) => {
       return null
     }
   };
-  messagesRender();
   return (
       <article className={`messages ${showMessages}`}>
-        <main className="messages-items">
-          {messagesRender()}
+        <main className="messages-text">
+          <div className="messages-text_inner">
+            {messagesRender()}
+          </div>
         </main>
         <footer className="messages-footer">
           <form action="">
             <section className="form-wrap">
-              {/*<Emoji/>*/}
               <SendArea currentUser={user} chatKey={chatKey}/>
             </section>
           </form>
@@ -41,5 +43,4 @@ const Messages = ({user, chatKey, isActive}) => {
       </article>
   )
 };
-
 export default Messages;
