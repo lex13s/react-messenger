@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/lex13s/react-messenger/static/css/main.184dbee6.chunk.css",
-    "main.js": "/lex13s/react-messenger/static/js/main.55b7663c.chunk.js",
-    "main.js.map": "/lex13s/react-messenger/static/js/main.55b7663c.chunk.js.map",
-    "runtime-main.js": "/lex13s/react-messenger/static/js/runtime-main.3ce6b0a9.js",
-    "runtime-main.js.map": "/lex13s/react-messenger/static/js/runtime-main.3ce6b0a9.js.map",
-    "static/js/2.c86518da.chunk.js": "/lex13s/react-messenger/static/js/2.c86518da.chunk.js",
-    "static/js/2.c86518da.chunk.js.map": "/lex13s/react-messenger/static/js/2.c86518da.chunk.js.map",
-    "index.html": "/lex13s/react-messenger/index.html",
-    "precache-manifest.17c1d790019d0acf1252a10b8dcdd9b9.js": "/lex13s/react-messenger/precache-manifest.17c1d790019d0acf1252a10b8dcdd9b9.js",
-    "service-worker.js": "/lex13s/react-messenger/service-worker.js",
-    "static/css/main.184dbee6.chunk.css.map": "/lex13s/react-messenger/static/css/main.184dbee6.chunk.css.map",
-    "static/js/2.c86518da.chunk.js.LICENSE.txt": "/lex13s/react-messenger/static/js/2.c86518da.chunk.js.LICENSE.txt"
+    "main.css": "/react-messenger/static/css/main.184dbee6.chunk.css",
+    "main.js": "/react-messenger/static/js/main.1d38d033.chunk.js",
+    "main.js.map": "/react-messenger/static/js/main.1d38d033.chunk.js.map",
+    "runtime-main.js": "/react-messenger/static/js/runtime-main.10c9a95e.js",
+    "runtime-main.js.map": "/react-messenger/static/js/runtime-main.10c9a95e.js.map",
+    "static/js/2.ab3dc53b.chunk.js": "/react-messenger/static/js/2.ab3dc53b.chunk.js",
+    "static/js/2.ab3dc53b.chunk.js.map": "/react-messenger/static/js/2.ab3dc53b.chunk.js.map",
+    "index.html": "/react-messenger/index.html",
+    "precache-manifest.5c2ae4667351a90b6334b70a3b738767.js": "/react-messenger/precache-manifest.5c2ae4667351a90b6334b70a3b738767.js",
+    "service-worker.js": "/react-messenger/service-worker.js",
+    "static/css/main.184dbee6.chunk.css.map": "/react-messenger/static/css/main.184dbee6.chunk.css.map",
+    "static/js/2.ab3dc53b.chunk.js.LICENSE.txt": "/react-messenger/static/js/2.ab3dc53b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3ce6b0a9.js",
-    "static/js/2.c86518da.chunk.js",
+    "static/js/runtime-main.10c9a95e.js",
+    "static/js/2.ab3dc53b.chunk.js",
     "static/css/main.184dbee6.chunk.css",
-    "static/js/main.55b7663c.chunk.js"
+    "static/js/main.1d38d033.chunk.js"
   ]
 }
