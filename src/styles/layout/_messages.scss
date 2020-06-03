@@ -71,9 +71,6 @@
     @include font-style($dark_color, 14px, 16px, 400);
     margin: 0;
     padding-bottom: 20px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
   }
 
   .message-item__time {

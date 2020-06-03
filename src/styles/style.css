@@ -368,9 +368,6 @@ body {
   font-weight: 400;
   margin: 0;
   padding-bottom: 20px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 .my-message-wrap .message-item__time, .friend-message-wrap .message-item__time {
   min-width: 10%;
